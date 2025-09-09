@@ -34,11 +34,11 @@ flutter:
   fonts:
     - family: OpenSans
       fonts:
-        - asset: assets/fonts/OpenSans-Bold.ttf
+        - asset: assets/fonts/Open_Sans/OpenSans-Bold.ttf
           weight: 700
     - family: Roboto
       fonts:
-        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
           weight: 400
 
 flutter_native_splash:

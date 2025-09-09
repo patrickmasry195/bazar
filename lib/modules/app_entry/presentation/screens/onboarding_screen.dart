@@ -1,8 +1,7 @@
 import 'package:bazar/core/routing/route_paths.dart';
-import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
 import 'package:bazar/core/utils/app_strings.dart';
 import 'package:bazar/modules/app_entry/presentation/widgets/dots_indicator_widget.dart';
-import 'package:bazar/modules/app_entry/presentation/widgets/image_slider_widget.dart';
+import 'package:bazar/modules/app_entry/presentation/widgets/page_slider_widget.dart';
 import 'package:bazar/modules/app_entry/presentation/widgets/navigation_button_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -66,7 +65,7 @@ class OnboardingScreen extends StatelessWidget {
                         child: Text('Skip'),
                       ),
                     ),
-                    ImageSliderWidget(
+                    PageSliderWidget(
                       controller: cubit.pageController,
                       onPageChanged: (int page) {
                         cubit.goToPage(page);
@@ -74,15 +73,8 @@ class OnboardingScreen extends StatelessWidget {
                       itemCount: onboardingItems.length,
                       imagePathBuilder: (index) =>
                           onboardingItems[index].imagePath,
-                    ),
-                    Text(currentItem.title, style: AppTextStyles.h3),
-                    SizedBox(height: 10),
-                    Text(
-                      currentItem.description,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.bodyLargeRegular.copyWith(
-                        color: Color(0xffA5A5A5),
-                      ),
+                      title: currentItem.title,
+                      description: currentItem.description,
                     ),
                     SizedBox(height: 20),
                     DotsIndicatorWidget(

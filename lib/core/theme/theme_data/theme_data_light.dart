@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 ThemeData getLightTheme() => ThemeData(
   primaryColor: AppColorLight.primaryColor,
+
   appBarTheme: AppBarThemeData(
     centerTitle: true,
     backgroundColor: AppColorLight.appbarColor,
@@ -28,8 +29,16 @@ ThemeData getLightTheme() => ThemeData(
   ),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
+      padding: WidgetStateProperty.all(EdgeInsets.zero),
       foregroundColor: WidgetStateProperty.all(AppColorLight.primaryColor),
       overlayColor: WidgetStateProperty.all(Colors.grey[30]),
+    ),
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(
+      padding: WidgetStateProperty.all(EdgeInsets.zero),
+      iconColor: WidgetStateProperty.all(Colors.black),
+      iconSize: WidgetStateProperty.all(24),
     ),
   ),
 );

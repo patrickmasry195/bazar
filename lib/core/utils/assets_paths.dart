@@ -12,6 +12,8 @@ abstract class AssetsPaths {
   static const logo1 = "$_logos/logo1.svg";
   static const logo2 = "$_logos/logo2.svg";
   static const logo3 = "$_logos/logo3.svg";
+  static const appleLogo = "$_logos/apple_logo.svg";
+  static const googleLogo = "$_logos/google_logo.svg";
 
   /// Onboarding paths
   static const onboarding1 = "$_onboarding/first_onboard.svg";
