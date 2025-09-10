@@ -19,4 +19,7 @@ abstract class AssetsPaths {
   static const onboarding1 = "$_onboarding/first_onboard.svg";
   static const onboarding2 = "$_onboarding/second_onboard.svg";
   static const onboarding3 = "$_onboarding/third_onboard.svg";
+
+  /// Terms and data policy
+  static const termsPolicy = "assets/terms_and_data_policy.md";
 }

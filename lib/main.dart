@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:bazar/core/routing/app_router.dart';
 import 'package:bazar/core/theme/theme_data/theme_data_light.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(const Bazar());
