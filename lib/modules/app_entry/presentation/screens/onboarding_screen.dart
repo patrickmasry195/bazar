@@ -87,7 +87,9 @@ class OnboardingScreen extends StatelessWidget {
                         if (!state.isLastPage) {
                           cubit.nextPage();
                         } else {
-                          GoRouter.of(context).go(RoutePaths.kSignInPath);
+                          GoRouter.of(
+                            context,
+                          ).pushReplacement(RoutePaths.kSignInPath);
                         }
                       },
                       buttonText: state.buttonText,

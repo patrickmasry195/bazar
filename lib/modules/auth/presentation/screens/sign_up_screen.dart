@@ -48,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                   AuthSuggestionWidget(
                     onPressed: () => GoRouter.of(
                       context,
-                    ).pushReplacement(RoutePaths.kSignInPath),
+                    ).push(RoutePaths.kSignInPath),
                     suggestion: "Have an account?",
                     buttonName: "Sign In",
                   ),
