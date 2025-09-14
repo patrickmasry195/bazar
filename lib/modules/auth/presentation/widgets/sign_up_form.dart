@@ -1,3 +1,4 @@
+import 'package:bazar/core/routing/route_paths.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:bazar/core/widgets/custom_button.dart';
 import 'package:bazar/modules/auth/presentation/cubit/validation/validation_cubit.dart';
 import 'package:bazar/modules/auth/presentation/widgets/password_checklist.dart';
 import 'package:bazar/modules/auth/presentation/widgets/text_form_field_widget.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({super.key});
@@ -80,6 +82,9 @@ class SignUpForm extends StatelessWidget {
                           "Password=${state.password.value}, "
                           "Name=${state.name.value}",
                         );
+                        GoRouter.of(
+                          context,
+                        ).push(RoutePaths.kEmailVerificationPath);
                       }
                     : null,
                 buttonName: "Register",

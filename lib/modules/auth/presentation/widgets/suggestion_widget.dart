@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:bazar/core/theme/app_color/app_color_light.dart';
 import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
 
-class AuthSuggestionWidget extends StatelessWidget {
-  const AuthSuggestionWidget({
+class SuggestionWidget extends StatelessWidget {
+  const SuggestionWidget({
     super.key,
     required this.suggestion,
     required this.buttonName,

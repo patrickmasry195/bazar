@@ -12,7 +12,7 @@ import 'package:bazar/core/utils/assets_paths.dart';
 import 'package:bazar/modules/auth/presentation/widgets/third_party_auth_button.dart';
 import 'package:bazar/modules/auth/presentation/widgets/separator_widget.dart';
 import 'package:bazar/modules/auth/presentation/widgets/sign_in_form.dart';
-import 'package:bazar/modules/auth/presentation/widgets/auth_suggestion_widget.dart';
+import 'package:bazar/modules/auth/presentation/widgets/suggestion_widget.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -40,7 +40,7 @@ class SignInScreen extends StatelessWidget {
                   SizedBox(height: 24),
                   SignInForm(),
                   SizedBox(height: 24),
-                  AuthSuggestionWidget(
+                  SuggestionWidget(
                     onPressed: () => GoRouter.of(
                       context,
                     ).pushReplacement(RoutePaths.kSignUpPath),

@@ -22,4 +22,7 @@ abstract class AssetsPaths {
 
   /// Terms and data policy
   static const termsPolicy = "assets/terms_and_data_policy.md";
+
+  /// Success Path
+  static const successImg = "assets/images/success.svg";
 }

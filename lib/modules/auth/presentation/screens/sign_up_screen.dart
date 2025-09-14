@@ -9,7 +9,7 @@ import 'package:bazar/core/theme/app_color/app_color_light.dart';
 import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
 import 'package:bazar/core/utils/enums.dart';
 import 'package:bazar/modules/auth/presentation/cubit/validation/validation_cubit.dart';
-import 'package:bazar/modules/auth/presentation/widgets/auth_suggestion_widget.dart';
+import 'package:bazar/modules/auth/presentation/widgets/suggestion_widget.dart';
 import 'package:bazar/modules/auth/presentation/widgets/sign_up_form.dart';
 import 'package:bazar/modules/auth/presentation/widgets/user_policy_button.dart';
 
@@ -28,10 +28,10 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () =>
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back_rounded),
+                    onPressed: () =>
                         GoRouter.of(context).push(RoutePaths.kSignInPath),
-                    child: Icon(Icons.arrow_back_rounded),
                   ),
                   SizedBox(height: 16),
                   Text("Sign Up", style: AppTextStyles.h3),
@@ -45,10 +45,9 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(height: 24),
                   SignUpForm(),
                   SizedBox(height: 24),
-                  AuthSuggestionWidget(
-                    onPressed: () => GoRouter.of(
-                      context,
-                    ).push(RoutePaths.kSignInPath),
+                  SuggestionWidget(
+                    onPressed: () =>
+                        GoRouter.of(context).push(RoutePaths.kSignInPath),
                     suggestion: "Have an account?",
                     buttonName: "Sign In",
                   ),
