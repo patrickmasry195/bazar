@@ -8,4 +8,6 @@ class RoutePaths {
   static const kPhoneNumberVerificationScreenPath =
       "/phone_number_verification_screen";
   static const kSuccessVerificationScreenPath = "/success_verification_screen";
+  static const kForgotPasswordPath = "/forgot_password_screen";
+  static const kResetPasswordPath = '/reset-password/:method';
 }

@@ -6,15 +6,16 @@ import 'package:bazar/core/utils/enums.dart';
 import 'package:bazar/core/validators/email_validator.dart';
 import 'package:bazar/core/validators/name_validator.dart';
 import 'package:bazar/core/validators/password_validator.dart';
+import 'package:bazar/core/validators/phone_validator.dart';
 
 part 'validation_state.dart';
 
 class ValidationCubit extends Cubit<ValidationState> {
+  ValidationCubit() : super(const ValidationState());
+
   void toggleShowPassword() {
     emit(state.copyWith(showPassword: !state.showPassword));
   }
-
-  ValidationCubit() : super(ValidationState());
 
   void setFormType(AuthFormType type) {
     emit(state.copyWith(formType: type));
@@ -53,15 +54,27 @@ class ValidationCubit extends Cubit<ValidationState> {
     );
   }
 
-  /// Dynamically choose which fields to validate
+  void phoneChanged(String value) {
+    final phone = PhoneValidator.dirty(value);
+    emit(
+      state.copyWith(
+        phone: phone,
+        phoneInteracted: true,
+        isValid: Formz.validate(_fieldsToValidate(phone: phone)),
+      ),
+    );
+  }
+
   List<FormzInput<dynamic, dynamic>> _fieldsToValidate({
     EmailValidator? email,
     PasswordValidator? password,
     NameValidator? name,
+    PhoneValidator? phone,
   }) {
     final fields = <FormzInput<dynamic, dynamic>>[
       email ?? state.email,
       password ?? state.password,
+      phone ?? state.phone,
     ];
 
     if (state.formType == AuthFormType.signUp) {

@@ -1,14 +1,17 @@
-import 'package:bazar/modules/auth/presentation/screens/phone_number_verification_screen.dart';
-import 'package:bazar/modules/auth/presentation/screens/success_verification_screen.dart';
+import 'package:bazar/core/utils/enums.dart';
+import 'package:bazar/modules/auth/presentation/screens/reset_password_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:bazar/core/routing/route_paths.dart';
 import 'package:bazar/modules/app_entry/presentation/screens/onboarding_screen.dart';
 import 'package:bazar/modules/app_entry/presentation/screens/splash_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/email_verification_screen.dart';
+import 'package:bazar/modules/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/phone_number_screen.dart';
+import 'package:bazar/modules/auth/presentation/screens/phone_number_verification_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/sign_in_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/sign_up_screen.dart';
+import 'package:bazar/modules/auth/presentation/screens/success_verification_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/user_policy_screen.dart';
 
 abstract class AppRouter {
@@ -46,6 +49,19 @@ abstract class AppRouter {
       GoRoute(
         path: RoutePaths.kSuccessVerificationScreenPath,
         builder: (context, state) => SuccessVerificationScreen(),
+      ),
+      GoRoute(
+        path: RoutePaths.kForgotPasswordPath,
+        builder: (context, state) => ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: RoutePaths.kResetPasswordPath,
+        builder: (context, state) {
+          final methodParam = state.pathParameters['method'];
+          final resetMethod = ResetMethod.fromString(methodParam);
+
+          return ResetPasswordScreen(resetMethod: resetMethod);
+        },
       ),
     ],
   );

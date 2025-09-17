@@ -1,3 +1,4 @@
+import 'package:bazar/core/routing/route_paths.dart';
 import 'package:bazar/core/widgets/custom_button.dart';
 import 'package:bazar/modules/auth/presentation/cubit/validation/validation_cubit.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:bazar/core/theme/app_color/app_color_light.dart';
 import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
 import 'package:bazar/modules/auth/presentation/widgets/text_form_field_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({super.key});
@@ -51,7 +53,8 @@ class SignInForm extends StatelessWidget {
               ),
               SizedBox(height: 16),
               TextButton(
-                onPressed: () {},
+                onPressed: () =>
+                    GoRouter.of(context).push(RoutePaths.kForgotPasswordPath),
                 child: Text(
                   "Forgot Password?",
                   style: AppTextStyles.bodyMediumSemiBold,

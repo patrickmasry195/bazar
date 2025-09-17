@@ -11,3 +11,14 @@ enum NameValidationError {
 }
 
 enum AuthFormType { signIn, signUp }
+
+enum ResetMethod {
+  email,
+  phone;
+
+  static ResetMethod fromString(String? method) {
+    return method?.toLowerCase() == 'phone'
+        ? ResetMethod.phone
+        : ResetMethod.email;
+  }
+}
