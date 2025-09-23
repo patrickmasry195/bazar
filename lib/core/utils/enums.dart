@@ -22,3 +22,5 @@ enum ResetMethod {
         : ResetMethod.email;
   }
 }
+
+enum VerificationSource { signUp, passwordReset }

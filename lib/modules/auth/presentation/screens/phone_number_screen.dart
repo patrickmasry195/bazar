@@ -1,15 +1,33 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:intl_phone_field/phone_number.dart';
 
 import 'package:bazar/core/routing/route_paths.dart';
 import 'package:bazar/core/theme/app_color/app_color_light.dart';
 import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
+import 'package:bazar/core/utils/enums.dart';
+import 'package:bazar/core/validators/phone_validator.dart';
 import 'package:bazar/core/widgets/custom_button.dart';
 import 'package:bazar/modules/auth/presentation/widgets/phone_number_input_field.dart';
 
-class PhoneNumberScreen extends StatelessWidget {
-  const PhoneNumberScreen({super.key});
+class PhoneNumberScreen extends StatefulWidget {
+  const PhoneNumberScreen({
+    super.key,
+    required this.email,
+    required this.source,
+  });
+
+  final String email;
+  final VerificationSource source;
+
+  @override
+  State<PhoneNumberScreen> createState() => _PhoneNumberScreenState();
+}
+
+class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
+  PhoneNumber? _phoneNumber;
+  bool _isPhoneNumberValid = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +49,7 @@ class PhoneNumberScreen extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back_rounded),
-                          onPressed: () => GoRouter.of(
-                            context,
-                          ).push(RoutePaths.kEmailVerificationPath),
+                          onPressed: () => context.pop(),
                         ),
                       ),
                     ),
@@ -63,7 +79,17 @@ class PhoneNumberScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: PhoneNumberInputField(),
+                      child: PhoneNumberInputField(
+                        onInputChanged: (phone) {
+                          setState(() {
+                            _phoneNumber = phone;
+                            final phoneValidator = PhoneValidator.dirty(
+                              phone.completeNumber,
+                            );
+                            _isPhoneNumberValid = phoneValidator.isValid;
+                          });
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -73,12 +99,11 @@ class PhoneNumberScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 43),
               child: CustomButton(
                 buttonName: "Continue",
-                onPressed: () {
-                  GoRouter.of(
-                    context,
-                  ).push(RoutePaths.kPhoneNumberVerificationScreenPath);
-                  //! Implement continue to phone num verify logic
-                },
+                onPressed: _isPhoneNumberValid
+                    ? () => context.push(
+                        '${RoutePaths.kPhoneNumberVerificationScreenPath}?phone=${_phoneNumber!.completeNumber}&source=${widget.source.name}&email=${Uri.encodeComponent(widget.email)}',
+                      )
+                    : null,
               ),
             ),
           ],

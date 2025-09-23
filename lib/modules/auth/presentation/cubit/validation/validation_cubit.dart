@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import 'package:bazar/core/utils/enums.dart';
+import 'package:bazar/core/validators/confirm_password_validator.dart';
 import 'package:bazar/core/validators/email_validator.dart';
 import 'package:bazar/core/validators/name_validator.dart';
 import 'package:bazar/core/validators/password_validator.dart';
@@ -34,11 +35,36 @@ class ValidationCubit extends Cubit<ValidationState> {
 
   void passwordChanged(String value) {
     final password = PasswordValidator.dirty(value);
+
+    final updatedConfirm = ConfirmPasswordValidator.dirty(
+      password: password.value,
+      value: state.confirmPassword.value,
+    );
     emit(
       state.copyWith(
         password: password,
+        confirmPassword: updatedConfirm,
         passwordInteracted: true,
-        isValid: Formz.validate(_fieldsToValidate(password: password)),
+        isValid: Formz.validate(
+          _fieldsToValidate(
+            password: password,
+            confirmPassword: updatedConfirm,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void confirmPasswordChanged(String value) {
+    final confirm = ConfirmPasswordValidator.dirty(
+      password: state.password.value,
+      value: value,
+    );
+    emit(
+      state.copyWith(
+        confirmPassword: confirm,
+        confirmPasswordInteracted: true,
+        isValid: Formz.validate(_fieldsToValidate(confirmPassword: confirm)),
       ),
     );
   }
@@ -70,17 +96,27 @@ class ValidationCubit extends Cubit<ValidationState> {
     PasswordValidator? password,
     NameValidator? name,
     PhoneValidator? phone,
+    ConfirmPasswordValidator? confirmPassword,
   }) {
-    final fields = <FormzInput<dynamic, dynamic>>[
-      email ?? state.email,
-      password ?? state.password,
-      phone ?? state.phone,
-    ];
-
     if (state.formType == AuthFormType.signUp) {
-      fields.add(name ?? state.name);
-    }
+      return <FormzInput<dynamic, dynamic>>[
+        email ?? state.email,
+        password ?? state.password,
+        name ?? state.name,
+      ];
+    } else {
+      final fields = <FormzInput<dynamic, dynamic>>[
+        email ?? state.email,
+        password ?? state.password,
+        phone ?? state.phone,
+      ];
 
-    return fields;
+      final cp = confirmPassword ?? state.confirmPassword;
+      if (confirmPassword != null || cp.value.isNotEmpty) {
+        fields.add(cp);
+      }
+
+      return fields;
+    }
   }
 }

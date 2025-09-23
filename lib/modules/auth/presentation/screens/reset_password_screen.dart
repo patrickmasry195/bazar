@@ -1,3 +1,4 @@
+import 'package:bazar/core/routing/route_paths.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,10 +76,29 @@ class ResetPasswordScreen extends StatelessWidget {
 
                     const SizedBox(height: 32),
                     CustomButton(
-                      onPressed: () {
-                        //!Handling send logic if it reset via email or password
-                      },
                       buttonName: "Send",
+                      onPressed: () {
+                        final cubit = context.read<ValidationCubit>();
+                        final state = cubit.state;
+
+                        final isEmail = resetMethod == ResetMethod.email;
+
+                        if (isEmail && state.email.isValid) {
+                          context.push(
+                            '${RoutePaths.kEmailVerificationPath}?email=${state.email.value}&source=${VerificationSource.passwordReset.name}',
+                          );
+                        } else if (!isEmail && state.phone.isValid) {
+                          context.push(
+                            '${RoutePaths.kPhoneNumberVerificationScreenPath}?phone=${state.phone.value}&source=${VerificationSource.passwordReset.name}',
+                          );
+                        } else {
+                          if (isEmail) {
+                            cubit.emailChanged(state.email.value);
+                          } else {
+                            cubit.phoneChanged(state.phone.value);
+                          }
+                        }
+                      },
                     ),
                   ],
                 );

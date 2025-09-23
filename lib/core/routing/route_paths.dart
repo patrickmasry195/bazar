@@ -7,7 +7,9 @@ class RoutePaths {
   static const kPhoneNumberScreenPath = "/phone_number_screen";
   static const kPhoneNumberVerificationScreenPath =
       "/phone_number_verification_screen";
-  static const kSuccessVerificationScreenPath = "/success_verification_screen";
+  static const kSuccessScreenPath = "/success";
   static const kForgotPasswordPath = "/forgot_password_screen";
   static const kResetPasswordPath = '/reset-password/:method';
+  static const kSetNewPasswordPath = "/set_new_password_screen";
+  static const kHomeScreenPath = "/home_screen";
 }

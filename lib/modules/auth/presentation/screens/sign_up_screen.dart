@@ -28,10 +28,10 @@ class SignUpScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back_rounded),
-                    onPressed: () =>
+                  InkWell(
+                    onTap: () =>
                         GoRouter.of(context).push(RoutePaths.kSignInPath),
+                    child: Icon(Icons.arrow_back),
                   ),
                   SizedBox(height: 16),
                   Text("Sign Up", style: AppTextStyles.h3),

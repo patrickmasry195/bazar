@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:intl_phone_field/phone_number.dart';
 
 import 'package:bazar/core/routing/route_paths.dart';
 import 'package:bazar/core/theme/app_color/app_color_light.dart';
 import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
+import 'package:bazar/core/utils/enums.dart';
 import 'package:bazar/core/widgets/custom_button.dart';
 import 'package:bazar/modules/auth/presentation/widgets/otp_widget.dart';
 import 'package:bazar/modules/auth/presentation/widgets/suggestion_widget.dart';
 
 class PhoneNumberVerificationScreen extends StatelessWidget {
-  const PhoneNumberVerificationScreen({super.key});
+  const PhoneNumberVerificationScreen({
+    super.key,
+    required this.phoneNumber,
+    required this.source,
+    required this.email,
+  });
+
+  final PhoneNumber phoneNumber;
+  final VerificationSource source;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +43,7 @@ class PhoneNumberVerificationScreen extends StatelessWidget {
                         ),
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back_rounded),
-                          onPressed: () => GoRouter.of(
-                            context,
-                          ).push(RoutePaths.kPhoneNumberScreenPath),
+                          onPressed: () => context.pop(),
                         ),
                       ),
                     ),
@@ -50,14 +59,14 @@ class PhoneNumberVerificationScreen extends StatelessWidget {
                             fontSize: 16.0,
                             color: AppColorLight.hintTextColor,
                           ),
-
                           children: <TextSpan>[
                             TextSpan(
                               text:
                                   'Please enter the code we just sent to phone number ',
                             ),
                             TextSpan(
-                              text: '(+20) 123477092 299',
+                              text:
+                                  '${phoneNumber.countryCode}${phoneNumber.number}',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -86,10 +95,13 @@ class PhoneNumberVerificationScreen extends StatelessWidget {
               child: CustomButton(
                 buttonName: "Continue",
                 onPressed: () {
-                  GoRouter.of(
-                    context,
-                  ).go(RoutePaths.kSuccessVerificationScreenPath);
-                  //! Implement continue to success logic
+                  if (source == VerificationSource.signUp) {
+                    GoRouter.of(context).go(
+                      '${RoutePaths.kSuccessScreenPath}?source=${VerificationSource.signUp.name}',
+                    );
+                  } else {
+                    GoRouter.of(context).go(RoutePaths.kSetNewPasswordPath);
+                  }
                 },
               ),
             ),

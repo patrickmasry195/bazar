@@ -7,6 +7,8 @@ class ValidationState extends Equatable {
     this.password = const PasswordValidator.pure(),
     this.name = const NameValidator.pure(),
     this.phone = const PhoneValidator.pure(),
+    this.confirmPassword = const ConfirmPasswordValidator.pure(),
+    this.confirmPasswordInteracted = false,
     this.isValid = false,
     this.nameInteracted = false,
     this.emailInteracted = false,
@@ -20,10 +22,12 @@ class ValidationState extends Equatable {
   final PasswordValidator password;
   final NameValidator name;
   final PhoneValidator phone;
+  final ConfirmPasswordValidator confirmPassword;
   final bool isValid;
   final bool nameInteracted;
   final bool emailInteracted;
   final bool passwordInteracted;
+  final bool confirmPasswordInteracted;
   final bool phoneInteracted;
   final bool showPassword;
 
@@ -34,6 +38,7 @@ class ValidationState extends Equatable {
     password,
     name,
     phone,
+    confirmPassword,
     isValid,
     nameInteracted,
     emailInteracted,
@@ -48,10 +53,12 @@ class ValidationState extends Equatable {
     PasswordValidator? password,
     NameValidator? name,
     PhoneValidator? phone,
+    ConfirmPasswordValidator? confirmPassword,
     bool? isValid,
     bool? nameInteracted,
     bool? emailInteracted,
     bool? passwordInteracted,
+    bool? confirmPasswordInteracted,
     bool? phoneInteracted,
     bool? showPassword,
   }) {
@@ -61,10 +68,13 @@ class ValidationState extends Equatable {
       password: password ?? this.password,
       name: name ?? this.name,
       phone: phone ?? this.phone,
+      confirmPassword: confirmPassword ?? this.confirmPassword,
       isValid: isValid ?? this.isValid,
       nameInteracted: nameInteracted ?? this.nameInteracted,
       emailInteracted: emailInteracted ?? this.emailInteracted,
       passwordInteracted: passwordInteracted ?? this.passwordInteracted,
+      confirmPasswordInteracted:
+          confirmPasswordInteracted ?? this.confirmPasswordInteracted,
       phoneInteracted: phoneInteracted ?? this.phoneInteracted,
       showPassword: showPassword ?? this.showPassword,
     );
