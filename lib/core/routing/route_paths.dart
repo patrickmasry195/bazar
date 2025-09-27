@@ -12,4 +12,7 @@ class RoutePaths {
   static const kResetPasswordPath = '/reset-password/:method';
   static const kSetNewPasswordPath = "/set_new_password_screen";
   static const kHomeScreenPath = "/home_screen";
+  static const kCategoryScreenPath = "/category_screen";
+  static const kCartScreenPath = "/cart_screen";
+  static const kProfileScreenPath = "/profile_screen";
 }

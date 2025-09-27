@@ -1,5 +1,5 @@
 import 'package:bazar/core/utils/enums.dart';
-import 'package:bazar/modules/auth/presentation/cubit/validation/validation_cubit.dart';
+import 'package:bazar/modules/auth/presentation/controllers/validation/validation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

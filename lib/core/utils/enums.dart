@@ -24,3 +24,5 @@ enum ResetMethod {
 }
 
 enum VerificationSource { signUp, passwordReset }
+
+enum NavbarItem { home, category, cart, profile }

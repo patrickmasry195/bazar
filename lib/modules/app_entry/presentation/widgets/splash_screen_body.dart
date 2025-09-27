@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:bazar/core/utils/assets_paths.dart';
 import 'package:bazar/core/widgets/custom_snackbar.dart';
-import 'package:bazar/modules/app_entry/presentation/cubits/splash_cubit/splash_cubit.dart';
+import 'package:bazar/modules/app_entry/presentation/controllers/splash_cubit/splash_cubit.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreenBody extends StatelessWidget {

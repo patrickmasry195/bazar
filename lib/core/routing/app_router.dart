@@ -15,7 +15,10 @@ import 'package:bazar/modules/auth/presentation/screens/sign_in_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/sign_up_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/success_screen.dart';
 import 'package:bazar/modules/auth/presentation/screens/user_policy_screen.dart';
+import 'package:bazar/modules/home/presentation/screens/category_screen.dart';
 import 'package:bazar/modules/home/presentation/screens/home_screen.dart';
+import 'package:bazar/modules/order_management/presentation/screens/cart_screen.dart';
+import 'package:bazar/modules/profile/presentation/screens/profile_screen.dart';
 
 abstract class AppRouter {
   static final router = GoRouter(
@@ -132,6 +135,18 @@ abstract class AppRouter {
       GoRoute(
         path: RoutePaths.kHomeScreenPath,
         builder: (context, state) => HomeScreen(),
+      ),
+      GoRoute(
+        path: RoutePaths.kCategoryScreenPath,
+        builder: (context, state) => CategoryScreen(),
+      ),
+      GoRoute(
+        path: RoutePaths.kCartScreenPath,
+        builder: (context, state) => CartScreen(),
+      ),
+      GoRoute(
+        path: RoutePaths.kProfileScreenPath,
+        builder: (context, state) => ProfileScreen(),
       ),
     ],
   );

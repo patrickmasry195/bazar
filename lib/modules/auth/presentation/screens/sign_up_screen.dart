@@ -8,7 +8,7 @@ import 'package:bazar/core/routing/route_paths.dart';
 import 'package:bazar/core/theme/app_color/app_color_light.dart';
 import 'package:bazar/core/theme/app_text_styles/app_text_styles.dart';
 import 'package:bazar/core/utils/enums.dart';
-import 'package:bazar/modules/auth/presentation/cubit/validation/validation_cubit.dart';
+import 'package:bazar/modules/auth/presentation/controllers/validation/validation_cubit.dart';
 import 'package:bazar/modules/auth/presentation/widgets/suggestion_widget.dart';
 import 'package:bazar/modules/auth/presentation/widgets/sign_up_form.dart';
 import 'package:bazar/modules/auth/presentation/widgets/user_policy_button.dart';

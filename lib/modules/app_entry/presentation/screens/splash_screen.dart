@@ -1,4 +1,4 @@
-import 'package:bazar/modules/app_entry/presentation/cubits/splash_cubit/splash_cubit.dart';
+import 'package:bazar/modules/app_entry/presentation/controllers/splash_cubit/splash_cubit.dart';
 import 'package:bazar/modules/app_entry/presentation/widgets/splash_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

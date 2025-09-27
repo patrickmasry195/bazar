@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:bazar/core/utils/assets_paths.dart';
 import 'package:bazar/modules/app_entry/data/models/onboarding_item.dart';
-import 'package:bazar/modules/app_entry/presentation/cubits/onboarding_cubit/onboarding_cubit.dart';
+import 'package:bazar/modules/app_entry/presentation/controllers/onboarding_cubit/onboarding_cubit.dart';
 import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends StatelessWidget {
